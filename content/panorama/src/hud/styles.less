@@ -1,15 +1,29 @@
-@import "test.less";
-
 .root {
     width: 100%;
     height: 100%;
 }
 
-@keyframes my_test {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(100%);
-    }
+.main-panel {
+    transition-property: transform;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+}
+
+.background-rock {
+    background-image: url('s2r://panorama/images/textures/miniprofile_rock_psd.vtex');
+    background-position: 50% 50%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border-top: 1px solid #3b404777;
+    border-right: 1px solid #00000088;
+    border-left: 1px solid #4c434677;
+    border-bottom: 1px solid #00000088;
+    box-shadow: fill #00000055 1px 1px 6px 0px;
+    //transition-property: box-shadow, brightness;
+    //transition-duration: 0.2s;
+    //transition-timing-function: ease-in-out;
+
+    //&:hover {
+    //    brightness: 1.5;
+    //}
 }

@@ -1,0 +1,63 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_pudge_lua"
+	{
+		"override_hero"                 "npc_dota_hero_pudge"
+		"MovementSpeed"                 "280"
+		"MovementTurnRate"              "2"
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"                  "100"
+		"StatusHealthRegen"             "0"
+		"StatusMana"                    "0"
+		"StatusManaRegen"               "0"
+		"VisionDaytimeRange"		    "2800"
+        "VisionNighttimeRange"		    "2800"
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"                 "0"
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"            "DOTA_UNIT_CAP_NO_ATTACK"
+
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"                      "pudge_meat_hook_scc"
+		"Ability2"                      "empty2"
+		"Ability3"                      "empty3"
+		"Ability4"                      "empty4"
+		"Ability5"                      "empty5"
+		"Ability6"                      "empty6"
+		"Ability7"                      "empty7"
+		"Ability8"                      "empty8"
+		"Ability9"                      "empty9"
+		"Ability10"                     "empty10"
+		"Ability11"                     "empty11"
+		"Ability12"                     "empty12"
+		"Ability13"                     "empty13"
+		"Ability14"                     "empty14"
+		"Ability15"                     "empty15"
+		"Ability16"                     "empty16"
+		"Ability17"                     "empty17"
+		"Ability18"                     "empty18"
+		"Ability19"                     "empty19"
+		"Ability20"                     "empty20"
+		"Ability21"                     "empty21"
+		"Ability22"                     "empty22"
+		"Ability23"                     "empty23"
+		"Ability24"                     "empty24"
+		"Ability25"                     "ability_hero"
+		"AbilityTalentStart"            "30"
+
+		// Bonuses
+		//----------------------------------------------------------------
+		"Bonuses"
+		{
+			"health"                    "-30"
+			"magnet"                    "0.25"
+		}
+	}
+}

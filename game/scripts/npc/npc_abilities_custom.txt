@@ -1,3 +1,5 @@
+#base "/abilities/pudge_meat_hook.txt"
+#base "/abilities/ability_donkey_fish.txt"
 #base "abilities.txt"
 
 "DOTAAbilities"

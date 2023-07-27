@@ -1,3 +1,5 @@
 declare interface CustomGameEventDeclarations {
-    c2s_test_event: {};
+    devCommand: {
+        type: 'restart' | 'script_reload' | 'test' | 'unit';
+    };
 }
