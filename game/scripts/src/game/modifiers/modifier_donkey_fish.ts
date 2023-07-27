@@ -19,7 +19,11 @@ export class modifier_donkey_fish extends BaseModifier {
     }
 
     DeclareFunctions(): ModifierFunction[] {
-        return [ModifierFunction.IGNORE_MOVESPEED_LIMIT, ModifierFunction.ON_DEATH];
+        return [ModifierFunction.IGNORE_MOVESPEED_LIMIT, ModifierFunction.ON_DEATH, ModifierFunction.MOVESPEED_ABSOLUTE];
+    }
+
+    GetModifierMoveSpeed_Absolute() {
+        return this.GetStackCount() * 200;
     }
 
     OnDeath(event: ModifierInstanceEvent) {
@@ -43,9 +47,7 @@ export class modifier_donkey_fish extends BaseModifier {
         if (event.attacker) {
             const playerController = event.attacker.GetPlayerOwner();
             if (playerController) {
-                const level = this.GetAbility().GetLevel();
-                logger.debug('level', level);
-                playerController['FishingScore'] = (playerController['FishingScore'] ?? 0) + 1;
+                playerController['FishingScore'] = (playerController['FishingScore'] ?? 0) + (this.GetStackCount() > 1 ? 5 : 1);
                 GameRules.XNetTable.SetTableValue('scores', `p${playerController.GetPlayerID()}`, { score: playerController['FishingScore'] });
             }
         }
@@ -76,6 +78,8 @@ export class modifier_donkey_fish extends BaseModifier {
 
     target?: Vector;
     OnIntervalThink() {
+        this.SetStackCount(this.GetAbility().GetLevel());
+        this.GetParent().SetModelScale(this.GetStackCount() > 1 ? 0.5 : 1);
         if (!this.GetParent().IsMoving()) {
             this.target = null;
         }
@@ -88,8 +92,8 @@ export class modifier_donkey_fish extends BaseModifier {
 
             const temp =
                 distance > 2000
-                    ? ((start + toOrigin.Normalized() * RandomFloat(300, 800)) as Vector)
-                    : ((start + RandomVector(RandomFloat(300, 600))) as Vector);
+                    ? ((start + toOrigin.Normalized() * RandomFloat(300, 800 * this.GetStackCount())) as Vector)
+                    : ((start + RandomVector(RandomFloat(300, 600 * this.GetStackCount()))) as Vector);
 
             if (testPointIsWater(temp) && GridNav.CanFindPath(start, temp)) {
                 this.target = temp;

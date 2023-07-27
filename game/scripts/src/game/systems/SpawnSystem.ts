@@ -5,6 +5,7 @@ import type { UnitBase } from '../../engine/Unit';
 import { DonkeyFish } from '../units/DonkeyFish';
 import { getCenter, testPointIsWater } from '../Utils';
 import { XNetTable } from '../modules/xnet-table';
+import { DonkeyFish2 } from '../units/DonkeyFish2';
 
 const logger = new Logger('SpawnSystem');
 
@@ -12,7 +13,7 @@ const randomChance = CreateUniformRandomStream(Time());
 
 @reloadable
 export class SpawnSystem extends SystemBase {
-    minimum: number = 30;
+    minimum: number = 20;
     random: CScriptUniformRandomStream;
     units: UnitBase[] = [];
 
@@ -49,7 +50,7 @@ export class SpawnSystem extends SystemBase {
             const pos = (origin + point) as Vector;
 
             if (testPointIsWater(pos)) {
-                const fish = new DonkeyFish();
+                const fish = this.random.RandomInt(0, 100) < 30 ? new DonkeyFish2() : new DonkeyFish();
                 this.units.push(fish);
                 fish.Spawn(pos, DotaTeam.BADGUYS).then(() => {
                     logger.debug('Spawned a fish', fish);
